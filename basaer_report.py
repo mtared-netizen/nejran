@@ -228,16 +228,19 @@ def page_cover(c):
         txt(c, "بصائر", W/2, logo_cy, "Cairo-Black", 22, GOLD, "center")
 
     # ── TITLE BLOCK ───────────────────────────────────────────────
-    # gold accent lines
-    rect(c, MARGIN, H*0.635, CW, 1.5, fill=GOLD)
-    rect(c, MARGIN, H*0.615, CW, 0.5, fill=GOLD)
+    # decorative gold lines framing the title block
+    title_top = H*0.670
+    line_gap  = 19*mm          # equal spacing between each line baseline
+
+    rect(c, MARGIN+10*mm, title_top + 3*mm, CW-20*mm, 1.2, fill=GOLD)
+    rect(c, MARGIN+10*mm, title_top - 3*line_gap - 10*mm, CW-20*mm, 1.2, fill=GOLD)
 
     txt(c, "تشخيص الواقع الحالي",
-        W/2, H*0.660, "TradArabic-Bold", 30, WHITE, "center")
+        W/2, title_top,              "TradArabic-Bold", 30, WHITE, "center")
     txt(c, "لجمعية الدعوة والإرشاد وتوعية",
-        W/2, H*0.608, "TradArabic-Bold", 24, GOLD, "center")
+        W/2, title_top - line_gap,   "TradArabic-Bold", 24, GOLD,  "center")
     txt(c, "الجاليات في نجران (بصائر)",
-        W/2, H*0.560, "TradArabic-Bold", 24, GOLD, "center")
+        W/2, title_top - 2*line_gap, "TradArabic-Bold", 24, GOLD,  "center")
 
     # gold rule
     rect(c, MARGIN, H*0.455, CW, 0.8, fill=GOLD)
