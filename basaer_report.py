@@ -190,52 +190,63 @@ def section_div(c, num_str, title_ar, sub_ar, page_num):
 #  PAGE 1 — COVER
 # ─────────────────────────────────────────────────────────────────────────────
 def page_cover(c):
+    LOGO_PATH = "c:/Users/mtare/Desktop/ابو عثمان/شعار بصائر.png"
     rect(c, 0, 0, W, H, fill=NAVY)
     # green lower band
-    rect(c, 0, 0, W, H*0.38, fill=DKGREEN)
+    rect(c, 0, 0, W, H*0.36, fill=DKGREEN)
     # geometric patterns
     for cx_, cy_, ro, ri, nn in [
-        (W*0.12, H*0.85, 70, 35, 16),
-        (W*0.88, H*0.75, 55, 28, 14),
-        (W*0.5,  H*0.92, 40, 20, 12),
-        (W*0.05, H*0.45, 45, 22, 12),
-        (W*0.95, H*0.28, 50, 25, 14),
+        (W*0.08, H*0.88, 60, 30, 16),
+        (W*0.92, H*0.78, 50, 25, 14),
+        (W*0.5,  H*0.94, 35, 18, 12),
+        (W*0.05, H*0.44, 40, 20, 12),
+        (W*0.95, H*0.27, 45, 22, 14),
     ]:
         islamic_star(c, cx_, cy_, ro, ri, nn, 0.07)
 
-    # gold horizontal rules
-    rect(c, MARGIN, H*0.62, CW, 1.5, fill=GOLD)
-    rect(c, MARGIN, H*0.60, 60, 3,   fill=GOLD)
+    # ── LOGO ──────────────────────────────────────────────────────
+    logo_s  = 62*mm          # logo square size
+    logo_x  = W/2 - logo_s/2
+    logo_y  = H*0.70         # bottom of logo
+    logo_cy = logo_y + logo_s/2
 
-    # LOGO AREA (circular placeholder)
-    cx_logo = W/2
-    cy_logo = H*0.82
-    r_logo  = 32*mm
-    c.setFillColor(DKGREEN)
+    # white circle frame behind logo
+    c.saveState()
+    c.setFillColor(WHITE)
     c.setStrokeColor(GOLD)
-    c.setLineWidth(1.5)
-    c.circle(cx_logo, cy_logo, r_logo, fill=1, stroke=1)
-    txt(c, "بصائر", cx_logo, cy_logo+6, "Cairo-Black", 18, GOLD, "center")
-    txt(c, "للدعوة والإرشاد", cx_logo, cy_logo-4, "Cairo-SemiBold", 8, WHITE, "center")
-    txt(c, "وتوعية الجاليات", cx_logo, cy_logo-13, "Cairo-SemiBold", 8, WHITE, "center")
+    c.setLineWidth(2)
+    c.circle(W/2, logo_cy, logo_s/2 + 4*mm, fill=1, stroke=1)
+    c.restoreState()
 
-    # TITLE BLOCK
-    txt(c, "تشخيص واقع", W-MARGIN, H*0.64, "Cairo-Black", 32, WHITE, "right")
-    txt(c, "جمعية الدعوة والإرشاد", W-MARGIN, H*0.565, "Cairo-Black", 26, GOLD, "right")
-    txt(c, "وتوعية الجاليات في نجران", W-MARGIN, H*0.505, "Cairo-Black", 26, GOLD, "right")
+    # actual logo image
+    try:
+        c.drawImage(LOGO_PATH, logo_x, logo_y, logo_s, logo_s,
+                    preserveAspectRatio=True, anchor='c', mask='auto')
+    except Exception:
+        txt(c, "بصائر", W/2, logo_cy, "Cairo-Black", 22, GOLD, "center")
+
+    # ── TITLE BLOCK ───────────────────────────────────────────────
+    # gold accent lines
+    rect(c, MARGIN, H*0.635, CW, 1.5, fill=GOLD)
+    rect(c, W-MARGIN-55*mm, H*0.615, 55*mm, 3, fill=GOLD)
+
+    txt(c, "التقرير التشخيصي لواقع", W-MARGIN, H*0.655, "Cairo-Regular", 12, LTGOLD, "right")
+    txt(c, "جمعية بصائر", W-MARGIN, H*0.605, "Cairo-Black", 36, WHITE, "right")
+    txt(c, "للدعوة والإرشاد وتوعية الجاليات", W-MARGIN, H*0.548, "Cairo-SemiBold", 20, GOLD, "right")
+    txt(c, "منطقة نجران", W-MARGIN, H*0.502, "Cairo-Regular", 14, LTGOLD, "right")
 
     # gold rule
-    rect(c, MARGIN, H*0.46, CW, 0.8, fill=GOLD)
+    rect(c, MARGIN, H*0.455, CW, 0.8, fill=GOLD)
 
-    # AUTHOR & DATE (lower green area)
-    txt(c, "إعداد", W-MARGIN, H*0.41, "Cairo-Regular", 9, LTGOLD, "right")
-    txt(c, "د. مطارد بن دخيل العنزي", W-MARGIN, H*0.355, "Cairo-Bold", 16, WHITE, "right")
-    txt(c, "مستشار استراتيجي", W-MARGIN, H*0.31, "Cairo-Regular", 10, LTGOLD, "right")
-    txt(c, "إبريل 2026م  |  المملكة العربية السعودية", W-MARGIN, H*0.26, "Cairo-Regular", 9, MIDGRAY, "right")
+    # ── AUTHOR & DATE ─────────────────────────────────────────────
+    txt(c, "إعداد", W-MARGIN, H*0.415, "Cairo-Regular", 9, LTGOLD, "right")
+    txt(c, "د. مطارد بن دخيل العنزي", W-MARGIN, H*0.36, "Cairo-Bold", 16, WHITE, "right")
+    txt(c, "مستشار استراتيجي", W-MARGIN, H*0.315, "Cairo-Regular", 10, LTGOLD, "right")
+    txt(c, "إبريل 2026م  |  المملكة العربية السعودية", W-MARGIN, H*0.265, "Cairo-Regular", 9, MIDGRAY, "right")
 
     # confidentiality badge
-    rect(c, MARGIN, 18*mm, 55*mm, 12*mm, fill=GOLD)
-    txt(c, "التقرير التشخيصي — المرحلة الأولى", MARGIN+54*mm, 22.5*mm, "Cairo-SemiBold", 7, NAVY, "right")
+    rect(c, MARGIN, 18*mm, 60*mm, 12*mm, fill=GOLD)
+    txt(c, "التقرير التشخيصي — المرحلة الأولى", MARGIN+59*mm, 22.5*mm, "Cairo-SemiBold", 7.5, NAVY, "right")
 
     c.showPage()
 
