@@ -120,7 +120,7 @@ def islamic_star(c, cx, cy, r_out, r_in, n=12, alpha=0.05, col=GOLD):
     c.restoreState()
 
 # ─── WRAPPED TEXT ────────────────────────────────────────────────────────────
-def wrap_ar(c, text, x, y, w, font="Cairo-Regular", size=9, color=WHITE,
+def wrap_ar(c, text, x, y, w, font="Cairo-Regular", size=11, color=WHITE,
             line_h=None, align="right"):
     if line_h is None: line_h = size * 1.55
     words = text.split()
@@ -266,17 +266,17 @@ def page_toc(c, pg):
     y = H-28*mm
     for i, (num, title, p) in enumerate(entries):
         bg = LTGRAY if i%2==0 else WHITE
-        rect(c, MARGIN, y-5.5*mm, CW, 7*mm, fill=bg)
+        rect(c, MARGIN, y-7*mm, CW, 9*mm, fill=bg)
         # number badge
-        rect(c, W-MARGIN-12*mm, y-4.5*mm, 10*mm, 5.5*mm, fill=NAVY)
-        txt(c, num, W-MARGIN-7.5*mm, y-2*mm, "Cairo-Bold", 7, GOLD, "center")
+        rect(c, W-MARGIN-13*mm, y-6*mm, 11*mm, 7*mm, fill=NAVY)
+        txt(c, num, W-MARGIN-7.5*mm, y-3*mm, "Cairo-Bold", 8, GOLD, "center")
         # title
-        txt(c, title, W-MARGIN-14*mm, y-1.5*mm, "Cairo-Regular", 9, DKGRAY, "right")
+        txt(c, title, W-MARGIN-16*mm, y-2*mm, "Cairo-Regular", 11, DKGRAY, "right")
         # dots and page number
-        txt(c, p, MARGIN+8*mm, y-1.5*mm, "Cairo-SemiBold", 9, NAVY, "left")
+        txt(c, p, MARGIN+8*mm, y-2*mm, "Cairo-SemiBold", 11, NAVY, "left")
         # dot line
-        line(c, MARGIN+12*mm, y-0.5*mm, W-MARGIN-15*mm, y-0.5*mm, LTGOLD, 0.3)
-        y -= 8*mm
+        line(c, MARGIN+14*mm, y-0.5*mm, W-MARGIN-17*mm, y-0.5*mm, LTGOLD, 0.3)
+        y -= 10.5*mm
 
     # bottom KPI strip
     kpis = [
@@ -313,7 +313,7 @@ def page_exec_summary(c, pg):
              "التي تهدف إلى تحديد وتحليل نقاط القوة والضعف الداخلية، إلى جانب الفرص والتحديات "
              "الخارجية التي تؤثر على أداء الجمعية. كما تم بناء هذا التقرير اعتمادًا على مراجعة "
              "وتحليل البيانات والتقارير الرسمية المنشورة خلال الفترة من عام 2019م إلى 2025م.")
-    wrap_ar(c, intro, W-MARGIN, H-24*mm, CW, "Cairo-Regular", 8.5, DKGRAY, 14, "right")
+    wrap_ar(c, intro, W-MARGIN, H-24*mm, CW, "Cairo-Regular", 10, DKGRAY, 15, "right")
 
     # OVERALL VERDICT BOX
     rect(c, MARGIN, H*0.61, CW, 32*mm, fill=NAVY)
@@ -324,7 +324,7 @@ def page_exec_summary(c, pg):
                "للجاليات إلى مؤسسة تعليمية علمية. هذا التحول يُقلّص إسلام الجاليات 85% "
                "لكنه يُضاعف طلاب متون 891%. الجمعية تمتلك مقومات استثنائية لكنها لا تُحوِّل "
                "إنجازها إلى أثر مقيس — ولا تعرف بالضبط أين تريد أن تكون بعد خمس سنوات.")
-    wrap_ar(c, verdict, W-MARGIN-6, H*0.61+21*mm, CW-10, "Cairo-Regular", 8.5, WHITE, 13, "right")
+    wrap_ar(c, verdict, W-MARGIN-6, H*0.61+21*mm, CW-10, "Cairo-Regular", 10, WHITE, 15, "right")
 
     # KPI GRID
     kpi_data = [
@@ -354,7 +354,7 @@ def page_exec_summary(c, pg):
     rect(c, MARGIN, 12*mm, CW, 12*mm, fill=LTGRAY)
     rect(c, MARGIN, 12*mm, 3,  12*mm, fill=GOLD)
     wrap_ar(c, "الجمعية ليست ضعيفة الأداء — هي ضعيفة القصد الاستراتيجي الواعي.",
-            W-MARGIN-5, 20*mm, CW-10, "Cairo-Bold", 9, DKGRAY, 13, "right")
+            W-MARGIN-5, 20*mm, CW-10, "Cairo-Bold", 10.5, DKGRAY, 14, "right")
 
     c.showPage()
 
@@ -386,8 +386,8 @@ def page_org_overview(c, pg):
         by = iy - row*12*mm
         rect(c, bx, by-9*mm, iw, 10*mm, fill=LTGRAY)
         rect(c, bx, by-9*mm, 3,  10*mm, fill=GOLD)
-        txt(c, lbl, bx+iw-3, by-2.5*mm, "Cairo-Regular", 7, MIDGRAY, "right")
-        txt(c, val, bx+iw-3, by-6.5*mm, "Cairo-SemiBold", 8, NAVY,  "right")
+        txt(c, lbl, bx+iw-3, by-2.5*mm, "Cairo-Regular", 8.5, MIDGRAY, "right")
+        txt(c, val, bx+iw-3, by-6.5*mm, "Cairo-SemiBold", 10, NAVY,  "right")
 
     # المادة الخامسة
     y5 = H-62*mm
@@ -417,7 +417,7 @@ def page_org_overview(c, pg):
         c.setFont("Cairo-Bold", 7)
         c.drawCentredString(MARGIN+7*mm, cy-10.5*mm, str(i+1))
         txt(c, title, W-MARGIN-4, cy-4*mm,  "Cairo-Bold", 8.5, NAVY, "right")
-        wrap_ar(c, desc, W-MARGIN-4, cy-10*mm, CW-16*mm, "Cairo-Regular", 8, DKGRAY, 12, "right")
+        wrap_ar(c, desc, W-MARGIN-4, cy-10*mm, CW-16*mm, "Cairo-Regular", 9.5, DKGRAY, 14, "right")
         cy -= 21*mm
 
     # governance quick stats
@@ -428,8 +428,8 @@ def page_org_overview(c, pg):
     for i,(l,v) in enumerate(stats):
         sx = MARGIN + i*sw
         line(c, sx+sw, 12*mm, sx+sw, 26*mm, WHITE, 0.3)
-        txt(c, v, sx+sw/2, 21*mm, "Cairo-Bold", 8.5, GOLD, "center")
-        txt(c, l, sx+sw/2, 14*mm, "Cairo-Regular", 6.5, WHITE, "center")
+        txt(c, v, sx+sw/2, 21*mm, "Cairo-Bold", 10, GOLD, "center")
+        txt(c, l, sx+sw/2, 14*mm, "Cairo-Regular", 8, WHITE, "center")
 
     c.showPage()
 
@@ -544,13 +544,13 @@ def draw_line_pts(c, pts, col):
 #  ANALYSIS BOX
 # ─────────────────────────────────────────────────────────────────────────────
 def analysis_box(c, x, y, w, text, title="التحليل", max_h=None):
-    lines_est = len(text)//60 + 4
-    bh = min(lines_est*12*mm, max_h or 60*mm)
+    lines_est = len(text)//55 + 4
+    bh = min(lines_est*14*mm, max_h or 75*mm)
     rect(c, x, y-bh, w, bh, fill=LTGRAY)
     rect(c, x+w-3, y-bh, 3, bh, fill=DKGREEN)
-    rect(c, x, y-6*mm, w, 6*mm, fill=DKGREEN)
-    txt(c, title, x+w-5, y-2*mm, "Cairo-Bold", 8.5, WHITE, "right")
-    wrap_ar(c, text, x+w-5, y-9*mm, w-10, "Cairo-Regular", 8, DKGRAY, 12.5, "right")
+    rect(c, x, y-7*mm, w, 7*mm, fill=DKGREEN)
+    txt(c, title, x+w-5, y-2.5*mm, "Cairo-Bold", 10.5, WHITE, "right")
+    wrap_ar(c, text, x+w-5, y-11*mm, w-10, "Cairo-Regular", 10, DKGRAY, 15, "right")
     return y - bh
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -603,7 +603,7 @@ def page_new_muslims(c, pg):
         tx = MARGIN + (len(values_row)-1-i)*col_w + col_w/2
         color = RED if v in ["11","14"] else DKGREEN if v in ["72","55"] else DKGRAY
         if v == "المسلمون الجدد": color = NAVY
-        txt(c, v, tx, ty-4.5*mm, "Cairo-SemiBold", 7, color, "center")
+        txt(c, v, tx, ty-4.5*mm, "Cairo-SemiBold", 8.5, color, "center")
     ty -= 7*mm
 
     # beneficiaries row
@@ -612,7 +612,7 @@ def page_new_muslims(c, pg):
     for i, v in enumerate(ben):
         tx = MARGIN + (len(ben)-1-i)*col_w + col_w/2
         col_ = DKGRAY if v != "مستفيدو البرامج" else NAVY
-        txt(c, v, tx, ty-4.5*mm, "Cairo-Regular", 7, col_, "center")
+        txt(c, v, tx, ty-4.5*mm, "Cairo-Regular", 8.5, col_, "center")
     ty -= 8*mm
 
     # Analysis
@@ -677,7 +677,7 @@ def page_mutun(c, pg):
             tx = MARGIN+(len(vals))*cw_ - i*cw_ + cw_/2
             col_ = NAVY if i==len(vals) else DKGRAY
             if v in ["2,559","858"]: col_ = DKGREEN
-            txt(c, v, tx, ty-4.5*mm, "Cairo-SemiBold", 7, col_, "center")
+            txt(c, v, tx, ty-4.5*mm, "Cairo-SemiBold", 8.5, col_, "center")
     ty -= 9*mm
 
     # growth badge
@@ -744,7 +744,7 @@ def page_dawa(c, pg):
         for i, v in enumerate([*vals, label]):
             tx = MARGIN+(len(vals))*cw_ - i*cw_ + cw_/2
             col_ = NAVY if i==len(vals) else DKGRAY
-            txt(c, v, tx, ty-4.5*mm, "Cairo-SemiBold", 7, col_, "center")
+            txt(c, v, tx, ty-4.5*mm, "Cairo-SemiBold", 8.5, col_, "center")
     ty -= 9*mm
 
     # Note box about 2023 durus spike
@@ -814,7 +814,7 @@ def page_ramadan(c, pg):
         for i, v in enumerate([*vals, label]):
             tx = MARGIN+(len(vals))*cw_ - i*cw_ + cw_/2
             col_ = NAVY if i==len(vals) else DKGRAY
-            txt(c, v, tx, ty-4.5*mm, "Cairo-SemiBold", 6.5, col_, "center")
+            txt(c, v, tx, ty-4.5*mm, "Cairo-SemiBold", 8, col_, "center")
     ty -= 10*mm
 
     # volunteer paradox highlight
@@ -899,7 +899,7 @@ def page_media(c, pg):
         for i, v in enumerate([*vals, label]):
             tx = MARGIN+(len(vals))*cw_m - i*cw_m + cw_m/2
             col_ = NAVY if i==len(vals) else DKGRAY
-            txt(c, v, tx, ty-4.5*mm, "Cairo-SemiBold", 7, col_, "center")
+            txt(c, v, tx, ty-4.5*mm, "Cairo-SemiBold", 8.5, col_, "center")
     ty -= 10*mm
 
     # Wohj box
@@ -983,7 +983,7 @@ def page_governance(c, pg):
             col_ = NAVY if i==len(vals) else DKGRAY
             if "93" in v or "94" in v or "100" in v: col_ = DKGREEN
             if "64" in v or "88" in v: col_ = AMBER
-            txt(c, v, tx, ty-4.5*mm, "Cairo-SemiBold", 7, col_, "center")
+            txt(c, v, tx, ty-4.5*mm, "Cairo-SemiBold", 8.5, col_, "center")
     ty -= 10*mm
 
     # Financial assets
@@ -1101,8 +1101,8 @@ def page_swot(c, pg):
             c.setFillAlpha(0.9)
             c.circle(bx+hw-8, cy+1.5*mm, 1.2, fill=1, stroke=0)
             c.setFillAlpha(1)
-            wrap_ar(c, pt, bx+hw-11, cy, hw-14, "Cairo-Regular", 6.2, WHITE, 9, "right")
-            cy -= 9.5*mm
+            wrap_ar(c, pt, bx+hw-11, cy, hw-14, "Cairo-Regular", 7.5, WHITE, 11, "right")
+            cy -= 11*mm
 
     c.showPage()
 
@@ -1158,7 +1158,7 @@ def page_gaps(c, pg):
         txt(c, title, W-MARGIN-4, cy-3.5*mm, "Cairo-Bold", 8.5, NAVY, "right")
         # desc
         wrap_ar(c, desc, W-MARGIN-4, cy-10*mm, CW-22*mm,
-                "Cairo-Regular", 7.5, DKGRAY, 11, "right")
+                "Cairo-Regular", 9, DKGRAY, 13, "right")
         cy -= gh + 1.5*mm
 
     c.showPage()
@@ -1215,7 +1215,7 @@ def page_programs_objectives(c, pg):
     for w_ in cols_w[:-1]: cols_x.append(cols_x[-1]+w_)
     headers_p = ["البرنامج", "هدف 1", "هدف 2", "هدف 3", "هدف 4", "الملاحظة"]
     for i, (h_, cx_) in enumerate(zip(headers_p, cols_x)):
-        txt(c, h_, cx_+cols_w[i]-2, ty-4.5*mm, "Cairo-Bold", 6.5, GOLD, "right")
+        txt(c, h_, cx_+cols_w[i]-2, ty-4.5*mm, "Cairo-Bold", 8, GOLD, "right")
     ty -= 9*mm
 
     for ri, (prog, o1, o2, o3, o4, note) in enumerate(programs):
@@ -1223,7 +1223,7 @@ def page_programs_objectives(c, pg):
         bg = LTGRAY if ri%2==0 else WHITE
         rect(c, MARGIN, ty-rh, CW, rh, fill=bg)
         # Program name
-        txt(c, prog, cols_x[0]+cols_w[0]-2, ty-5*mm, "Cairo-SemiBold", 6.5, NAVY, "right")
+        txt(c, prog, cols_x[0]+cols_w[0]-2, ty-5*mm, "Cairo-SemiBold", 8, NAVY, "right")
         # Objectives checkmarks
         for j, (matched, cx_) in enumerate(zip([o1,o2,o3,o4], cols_x[1:5])):
             symbol = "✓" if matched else "—"
@@ -1233,7 +1233,7 @@ def page_programs_objectives(c, pg):
             c.drawCentredString(cx_+cols_w[j+1]/2, ty-5.5*mm, ar(symbol))
         # Note
         wrap_ar(c, note, cols_x[5]+cols_w[5]-2, ty-2*mm, cols_w[5]-4,
-                "Cairo-Regular", 5.5, DKGRAY, 8, "right")
+                "Cairo-Regular", 7, DKGRAY, 10, "right")
         ty -= rh
 
     # Alignment summary
@@ -1253,8 +1253,8 @@ def page_programs_objectives(c, pg):
     ]
     cy2 = ty - 10*mm
     for title_f, desc_f in findings:
-        txt(c, title_f, W-MARGIN-4, cy2, "Cairo-SemiBold", 7.5, GOLD, "right")
-        txt(c, desc_f,  W-MARGIN-4, cy2-5*mm, "Cairo-Regular", 7, WHITE, "right")
+        txt(c, title_f, W-MARGIN-4, cy2, "Cairo-SemiBold", 9, GOLD, "right")
+        txt(c, desc_f,  W-MARGIN-4, cy2-5*mm, "Cairo-Regular", 8.5, WHITE, "right")
         cy2 -= 10*mm
 
     c.showPage()
@@ -1267,18 +1267,18 @@ def page_conclusion(c, pg):
     txt(c, "الخلاصة التشخيصية النهائية", W-MARGIN, H-19*mm, "Cairo-Black", 16, NAVY, "right")
     line(c, MARGIN, H-22*mm, W-MARGIN, H-22*mm, GOLD, 1.2)
 
-    # Big quote box
-    rect(c, MARGIN, H-75*mm, CW, 45*mm, fill=NAVY)
-    rect(c, MARGIN, H-75*mm, 4, 45*mm, fill=GOLD)
-    islamic_star(c, MARGIN+20*mm, H-52*mm, 25*mm, 12*mm, 12, 0.08)
+    # Big quote box — extra height so text has breathing room
+    rect(c, MARGIN, H-80*mm, CW, 52*mm, fill=NAVY)
+    rect(c, MARGIN, H-80*mm, 4, 52*mm, fill=GOLD)
+    islamic_star(c, MARGIN+20*mm, H-57*mm, 25*mm, 12*mm, 12, 0.08)
 
     conclusion_text = ("بعد مراجعة سبع سنوات من البيانات الموثقة، الصورة أعمق وأكثر تعقيداً "
                        "مما تبدو عليه في التقارير السنوية المنفردة. جمعية بصائر ليست ضعيفة "
                        "الأداء — هي ضعيفة القصد الاستراتيجي الواعي. تمتلك مقومات نادرة: "
                        "برنامج علمي ينمو بقوة، ساعات تطوعية في تصاعد مستمر، حوكمة متميزة، "
                        "وتجربة رقمية أثبتت إمكانية الوصول لمليون مشاهد.")
-    wrap_ar(c, conclusion_text, W-MARGIN-6, H-31*mm, CW-12,
-            "Cairo-Bold", 9.5, WHITE, 15, "right")
+    wrap_ar(c, conclusion_text, W-MARGIN-6, H-33*mm, CW-12,
+            "Cairo-Bold", 10, WHITE, 15, "right")
 
     # Second part
     conclusion2 = ("لكنها في الوقت ذاته تسمح لأكثر مؤشراتها جوهرية — إسلام الجاليات — أن ينهار "
@@ -1286,8 +1286,8 @@ def page_conclusion(c, pg):
                    "بناء شيء جديد، بل اتخاذ قرارات لم تُتخذ بعد — عن الهوية، عن الهيكل، "
                    "عن الاستدامة — وتحويل الطاقة الكامنة الهائلة إلى منظومة مؤسسية تعمل "
                    "بأنظمتها لا بأشخاصها.")
-    wrap_ar(c, conclusion2, W-MARGIN-6, H-54*mm, CW-12,
-            "Cairo-Regular", 9, LTGOLD, 14, "right")
+    wrap_ar(c, conclusion2, W-MARGIN-6, H-59*mm, CW-12,
+            "Cairo-Regular", 9.5, LTGOLD, 14, "right")
 
     # 4 Priority boxes
     priorities = [
@@ -1300,16 +1300,16 @@ def page_conclusion(c, pg):
         (DKGREEN, "04", "الاستدامة المالية والرقمية",
          "تطوير الأرض الاستثمارية وبناء استراتيجية رقمية تُحوِّل وهج 2024 إلى نمو مستدام."),
     ]
-    py = H-80*mm
+    py = H-86*mm
     pw = CW/4 - 1.5*mm
     for i, (col, num, title_p, desc_p) in enumerate(priorities):
         px = MARGIN + i*(pw+2*mm)
-        rect(c, px, py-32*mm, pw, 32*mm, fill=col)
-        rect(c, px, py-32*mm, pw, 3, fill=WHITE)
-        txt(c, num, px+pw/2, py-7*mm, "Cairo-Black", 18, WHITE, "center")
-        txt(c, title_p, px+pw/2, py-14*mm, "Cairo-Bold", 7, WHITE, "center")
-        wrap_ar(c, desc_p, px+pw-3, py-18*mm, pw-6,
-                "Cairo-Regular", 6.5, WHITE, 10, "right")
+        rect(c, px, py-34*mm, pw, 34*mm, fill=col)
+        rect(c, px, py-34*mm, pw, 3, fill=WHITE)
+        txt(c, num, px+pw/2, py-8*mm, "Cairo-Black", 18, WHITE, "center")
+        txt(c, title_p, px+pw/2, py-16*mm, "Cairo-Bold", 8, WHITE, "center")
+        wrap_ar(c, desc_p, px+pw-3, py-21*mm, pw-6,
+                "Cairo-Regular", 8, WHITE, 12, "right")
 
     # Author signature
     rect(c, MARGIN, 22*mm, CW, 18*mm, fill=LTGRAY)
