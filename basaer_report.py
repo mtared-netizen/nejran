@@ -52,12 +52,32 @@ PW    = W
 PH    = H
 
 # ─── ARABIC TEXT HELPER ──────────────────────────────────────────────────────
+# Cairo has no isolated presentation forms (FE8x/FExx isolated).
+# Map every missing isolated form → its base Unicode character.
+_ISO_FB = {
+    '\uFE80':'\u0621','\uFE81':'\u0622','\uFE83':'\u0623',
+    '\uFE85':'\u0624','\uFE87':'\u0625','\uFE89':'\u0626',
+    '\uFE8D':'\u0627','\uFE8F':'\u0628','\uFE93':'\u0629',
+    '\uFE95':'\u062A','\uFE99':'\u062B','\uFE9D':'\u062C',
+    '\uFEA1':'\u062D','\uFEA5':'\u062E','\uFEA9':'\u062F',
+    '\uFEAB':'\u0630','\uFEAD':'\u0631','\uFEAF':'\u0632',
+    '\uFEB1':'\u0633','\uFEB5':'\u0634','\uFEB9':'\u0635',
+    '\uFEBD':'\u0636','\uFEC1':'\u0637','\uFEC5':'\u0638',
+    '\uFEC9':'\u0639','\uFECD':'\u063A','\uFED1':'\u0641',
+    '\uFED5':'\u0642','\uFED9':'\u0643','\uFEDD':'\u0644',
+    '\uFEE1':'\u0645','\uFEE5':'\u0646','\uFEE9':'\u0647',
+    '\uFEED':'\u0648','\uFEEF':'\u0649','\uFEF1':'\u064A',
+}
+
 def ar(t):
     reshaped  = arabic_reshaper.reshape(str(t))
     displayed = get_display(reshaped)
-    # Strip BiDi control / format chars that have no glyph in Cairo
-    return ''.join(c for c in displayed
-                   if unicodedata.category(c) not in ('Cc', 'Cf'))
+    out = []
+    for c in displayed:
+        if unicodedata.category(c) in ('Cc', 'Cf'):
+            continue
+        out.append(_ISO_FB.get(c, c))
+    return ''.join(out)
 
 def txt(c, text, x, y, font="Cairo-Regular", size=10, color=WHITE, anchor="right"):
     c.setFont(font, size)
