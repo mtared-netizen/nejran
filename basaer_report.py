@@ -19,27 +19,16 @@ def reg(name, path):
     try: pdfmetrics.registerFont(TTFont(name, path))
     except: pass
 
-# Traditional Naskh – primary font pair (all verified with Arabic presentation forms)
-reg("Naskh-Regular", UF+"arfonts-amiri-quran.ttf")
-reg("Naskh-Bold",    UF+"kfgqpc-uthman-taha-naskh-bold.ttf")
-reg("Naskh-Light",   UF+"arfonts-amiri-quran.ttf")
-reg("Naskh-Heavy",   UF+"traditional-naskh-bold.ttf")
-
-# Aliases: register same files under old Cairo/DIN names
-_NASKH_MAP = {
-    "Cairo-Regular":   UF+"arfonts-amiri-quran.ttf",
-    "Cairo-Medium":    UF+"arfonts-amiri-quran.ttf",
-    "Cairo-SemiBold":  UF+"kfgqpc-uthman-taha-naskh-bold.ttf",
-    "Cairo-Bold":      UF+"kfgqpc-uthman-taha-naskh-bold.ttf",
-    "Cairo-ExtraBold": UF+"traditional-naskh-bold.ttf",
-    "Cairo-Black":     UF+"traditional-naskh-bold.ttf",
-    "DIN-Regular":     UF+"arfonts-amiri-quran.ttf",
-    "DIN-Bold":        UF+"kfgqpc-uthman-taha-naskh-bold.ttf",
-    "DIN-Light":       UF+"arfonts-amiri-quran.ttf",
-    "DIN-Medium":      UF+"arfonts-amiri-quran.ttf",
-}
-for _alias, _path in _NASKH_MAP.items():
-    reg(_alias, _path)
+reg("Cairo-Regular",   UF+"Cairo-Regular.ttf")
+reg("Cairo-Medium",    UF+"Cairo-Medium.ttf")
+reg("Cairo-SemiBold",  UF+"Cairo-SemiBold.ttf")
+reg("Cairo-Bold",      UF+"Cairo-Bold.ttf")
+reg("Cairo-ExtraBold", UF+"Cairo-ExtraBold.ttf")
+reg("Cairo-Black",     UF+"Cairo-Black.ttf")
+reg("DIN-Regular",     UF+"ArbFONTS-DINNextLTArabic-Regular-3.ttf")
+reg("DIN-Bold",        UF+"ArbFONTS-DINNextLTArabic-Bold-3.ttf")
+reg("DIN-Light",       UF+"ArbFONTS-DINNextLTArabic-Light-3.ttf")
+reg("DIN-Medium",      UF+"ArbFONTS-DINNextLTArabic-Medium-3.ttf")
 
 # ─── COLOURS ─────────────────────────────────────────────────────────────────
 NAVY      = colors.HexColor("#0D1B2A")
