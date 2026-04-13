@@ -19,24 +19,24 @@ def reg(name, path):
     try: pdfmetrics.registerFont(TTFont(name, path))
     except: pass
 
-# Traditional Naskh – primary font pair
-reg("Naskh-Regular", WF+"BTraditionalArabic-Regular.ttf")
+# Traditional Naskh – primary font pair (all verified with Arabic presentation forms)
+reg("Naskh-Regular", UF+"arfonts-amiri-quran.ttf")
 reg("Naskh-Bold",    UF+"kfgqpc-uthman-taha-naskh-bold.ttf")
-reg("Naskh-Light",   WF+"BTraditionalArabic-Regular.ttf")
+reg("Naskh-Light",   UF+"arfonts-amiri-quran.ttf")
 reg("Naskh-Heavy",   UF+"traditional-naskh-bold.ttf")
 
 # Aliases: register same files under old Cairo/DIN names
 _NASKH_MAP = {
-    "Cairo-Regular":   WF+"BTraditionalArabic-Regular.ttf",
-    "Cairo-Medium":    WF+"BTraditionalArabic-Regular.ttf",
-    "Cairo-SemiBold":  WF+"BTraditionalArabic-Bold.ttf",
+    "Cairo-Regular":   UF+"arfonts-amiri-quran.ttf",
+    "Cairo-Medium":    UF+"arfonts-amiri-quran.ttf",
+    "Cairo-SemiBold":  UF+"kfgqpc-uthman-taha-naskh-bold.ttf",
     "Cairo-Bold":      UF+"kfgqpc-uthman-taha-naskh-bold.ttf",
     "Cairo-ExtraBold": UF+"traditional-naskh-bold.ttf",
     "Cairo-Black":     UF+"traditional-naskh-bold.ttf",
-    "DIN-Regular":     WF+"BTraditionalArabic-Regular.ttf",
+    "DIN-Regular":     UF+"arfonts-amiri-quran.ttf",
     "DIN-Bold":        UF+"kfgqpc-uthman-taha-naskh-bold.ttf",
-    "DIN-Light":       WF+"BTraditionalArabic-Regular.ttf",
-    "DIN-Medium":      WF+"BTraditionalArabic-Regular.ttf",
+    "DIN-Light":       UF+"arfonts-amiri-quran.ttf",
+    "DIN-Medium":      UF+"arfonts-amiri-quran.ttf",
 }
 for _alias, _path in _NASKH_MAP.items():
     reg(_alias, _path)
