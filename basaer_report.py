@@ -246,7 +246,7 @@ def page_toc(c, pg):
     header_footer(c, pg, "فهرس المحتويات")
     rect(c, 0, H-14*mm-8*mm, W, 8*mm, fill=LTGRAY)
     txt(c, "فهرس المحتويات", W-MARGIN, H-18.5*mm, "Cairo-Bold", 16, NAVY, "right")
-    line(c, MARGIN, H-22*mm, W-MARGIN, H-22*mm, GOLD, 1)
+    line(c, MARGIN, H-24*mm, W-MARGIN, H-24*mm, GOLD, 1)
 
     entries = [
         ("01", "تمهيد وملخص تنفيذي",                        "3"),
@@ -302,9 +302,9 @@ def page_toc(c, pg):
 # ─────────────────────────────────────────────────────────────────────────────
 def page_exec_summary(c, pg):
     header_footer(c, pg, "الملخص التنفيذي")
-    rect(c, 0, H-14*mm-6*mm, W, 6*mm, fill=LTGRAY)
-    txt(c, "الملخص التنفيذي", W-MARGIN, H-17.5*mm, "Cairo-Black", 18, NAVY, "right")
-    line(c, MARGIN, H-20*mm, W-MARGIN, H-20*mm, GOLD, 1.2)
+    rect(c, 0, H-14*mm-10*mm, W, 10*mm, fill=LTGRAY)
+    txt(c, "الملخص التنفيذي", W-MARGIN, H-21*mm, "Cairo-Black", 18, NAVY, "right")
+    line(c, MARGIN, H-24*mm, W-MARGIN, H-24*mm, GOLD, 1.2)
 
     intro = ("الحمد لله رب العالمين، والصلاة والسلام على أشرف الأنبياء والمرسلين نبينا محمد، "
              "وعلى آله وصحبه أجمعين، أما بعد: يأتي هذا التقرير التشخيصي لواقع جمعية الدعوة "
@@ -365,7 +365,7 @@ def page_org_overview(c, pg):
     header_footer(c, pg, "لمحة عن الجمعية")
     txt(c, "لمحة عن جمعية بصائر — الهوية والأهداف", W-MARGIN, H-19*mm,
         "Cairo-Black", 15, NAVY, "right")
-    line(c, MARGIN, H-22*mm, W-MARGIN, H-22*mm, GOLD, 1)
+    line(c, MARGIN, H-24*mm, W-MARGIN, H-24*mm, GOLD, 1)
 
     # Identity cards row
     info = [
@@ -549,9 +549,9 @@ def analysis_box(c, x, y, w, text, title="التحليل", max_h=None):
     bh = min(lines_est*14*mm, max_h or 75*mm)
     rect(c, x, y-bh, w, bh, fill=LTGRAY)
     rect(c, x+w-3, y-bh, 3, bh, fill=DKGREEN)
-    rect(c, x, y-7*mm, w, 7*mm, fill=DKGREEN)
-    txt(c, title, x+w-5, y-2.5*mm, "Cairo-Bold", 10.5, WHITE, "right")
-    wrap_ar(c, text, x+w-5, y-11*mm, w-10, "Cairo-Regular", 10, DKGRAY, 15, "right")
+    rect(c, x, y-8*mm, w, 8*mm, fill=DKGREEN)
+    txt(c, title, x+w-5, y-5*mm, "Cairo-Bold", 10.5, WHITE, "right")
+    wrap_ar(c, text, x+w-5, y-13*mm, w-10, "Cairo-Regular", 10, DKGRAY, 15, "right")
     return y - bh
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -560,8 +560,8 @@ def analysis_box(c, x, y, w, text, title="التحليل", max_h=None):
 def page_new_muslims(c, pg):
     header_footer(c, pg, "مؤشر المسلمون الجدد")
     txt(c, "محور الجاليات — المسلمون الجدد 2019–2025",
-        W-MARGIN, H-19*mm, "Cairo-Black", 15, NAVY, "right")
-    line(c, MARGIN, H-22*mm, W-MARGIN, H-22*mm, GOLD, 1)
+        W-MARGIN, H-21*mm, "Cairo-Black", 15, NAVY, "right")
+    line(c, MARGIN, H-24*mm, W-MARGIN, H-24*mm, GOLD, 1)
 
     years  = [2019,2020,2021,2022,2023,2024,2025]
     muslims= [72, 49, 34, 42, 55, 14, 11]
@@ -636,8 +636,8 @@ def page_new_muslims(c, pg):
 def page_mutun(c, pg):
     header_footer(c, pg, "برنامج متون")
     txt(c, "برنامج متون — الإنجاز الأبرز 2019–2025",
-        W-MARGIN, H-19*mm, "Cairo-Black", 15, NAVY, "right")
-    line(c, MARGIN, H-22*mm, W-MARGIN, H-22*mm, GOLD, 1)
+        W-MARGIN, H-21*mm, "Cairo-Black", 15, NAVY, "right")
+    line(c, MARGIN, H-24*mm, W-MARGIN, H-24*mm, GOLD, 1)
 
     years   = [2019,2020,2021,2022,2023,2024,2025]
     students= [258, 358, 610, 438, 373, 858, 2559]
@@ -707,8 +707,8 @@ def page_mutun(c, pg):
 def page_dawa(c, pg):
     header_footer(c, pg, "البرامج الدعوية")
     txt(c, "البرامج الدعوية والعلمية 2019–2025",
-        W-MARGIN, H-19*mm, "Cairo-Black", 15, NAVY, "right")
-    line(c, MARGIN, H-22*mm, W-MARGIN, H-22*mm, GOLD, 1)
+        W-MARGIN, H-21*mm, "Cairo-Black", 15, NAVY, "right")
+    line(c, MARGIN, H-24*mm, W-MARGIN, H-24*mm, GOLD, 1)
 
     years  = [2019,2020,2021,2022,2023,2024,2025]
     kalmat = [529, 211, 270,  91, 191,  89, 168]
@@ -774,8 +774,8 @@ def page_dawa(c, pg):
 def page_ramadan(c, pg):
     header_footer(c, pg, "المشاريع الرمضانية والتطوع")
     txt(c, "المشاريع الرمضانية والتطوع 2019–2025",
-        W-MARGIN, H-19*mm, "Cairo-Black", 15, NAVY, "right")
-    line(c, MARGIN, H-22*mm, W-MARGIN, H-22*mm, GOLD, 1)
+        W-MARGIN, H-21*mm, "Cairo-Black", 15, NAVY, "right")
+    line(c, MARGIN, H-24*mm, W-MARGIN, H-24*mm, GOLD, 1)
 
     years   = [2019,2020,2021,2022,2023,2024,2025]
     iftar   = [525, 28000, 0, 17094, 47328, 58000, 38918]
@@ -848,8 +848,8 @@ def page_ramadan(c, pg):
 def page_media(c, pg):
     header_footer(c, pg, "الإعلام والحضور الرقمي")
     txt(c, "الإعلام والحضور الرقمي 2023–2025",
-        W-MARGIN, H-19*mm, "Cairo-Black", 15, NAVY, "right")
-    line(c, MARGIN, H-22*mm, W-MARGIN, H-22*mm, GOLD, 1)
+        W-MARGIN, H-21*mm, "Cairo-Black", 15, NAVY, "right")
+    line(c, MARGIN, H-24*mm, W-MARGIN, H-24*mm, GOLD, 1)
 
     years_m = [2023, 2024, 2025]
     x_views = [23895, 2310900, 222583]
@@ -930,8 +930,8 @@ def page_media(c, pg):
 def page_governance(c, pg):
     header_footer(c, pg, "الحوكمة المؤسسية")
     txt(c, "الحوكمة المؤسسية — نتائج التقييم",
-        W-MARGIN, H-19*mm, "Cairo-Black", 15, NAVY, "right")
-    line(c, MARGIN, H-22*mm, W-MARGIN, H-22*mm, GOLD, 1)
+        W-MARGIN, H-21*mm, "Cairo-Black", 15, NAVY, "right")
+    line(c, MARGIN, H-24*mm, W-MARGIN, H-24*mm, GOLD, 1)
 
     # Overall score
     rect(c, MARGIN, H-65*mm, CW, 35*mm, fill=DKGREEN)
@@ -1019,8 +1019,8 @@ def page_governance(c, pg):
 # ─────────────────────────────────────────────────────────────────────────────
 def page_swot(c, pg):
     header_footer(c, pg, "تحليل SWOT")
-    txt(c, "مصفوفة SWOT الموسعة — 45 نقطة", W-MARGIN, H-19*mm, "Cairo-Black", 15, NAVY, "right")
-    line(c, MARGIN, H-22*mm, W-MARGIN, H-22*mm, GOLD, 1)
+    txt(c, "مصفوفة SWOT الموسعة — 45 نقطة", W-MARGIN, H-21*mm, "Cairo-Black", 15, NAVY, "right")
+    line(c, MARGIN, H-24*mm, W-MARGIN, H-24*mm, GOLD, 1)
 
     hw = CW/2 - 1*mm
     hh = (H - 30*mm - 24*mm) / 2 - 2*mm
@@ -1033,7 +1033,7 @@ def page_swot(c, pg):
             "أثر دعوي تراكمي موثق: 931 مسلماً من 11 جنسية منذ التأسيس",
             "حوكمة مؤسسية متميزة ومستدامة: 93.08% لأربع سنوات",
             "شبكة شراكات فاعلة: إحسان، تبرع، الراجحي، العطير، التطوع الوطني",
-            "ثقة الدعاة: 168 كلمة دعوية، 46 درساً في 2025",
+            "ثقة الدعاة والمشايخ: 168 كلمة دعوية، 46 درساً في 2025",
             "تجربة رقمية ناجحة: 1,169,000 مشاهدة لبرنامج بصائر للناس",
             "بنية تحتية جاهزة: مقر، أسطول سيارات، أنظمة مالية",
             "أرض استثمارية على طريق المطار — أصل تحويلي كبير",
@@ -1114,8 +1114,8 @@ def page_swot(c, pg):
 def page_gaps(c, pg):
     header_footer(c, pg, "التشخيص المعمق — الفجوات الحرجة")
     txt(c, "التشخيص المعمق — الفجوات الست الحرجة",
-        W-MARGIN, H-19*mm, "Cairo-Black", 15, NAVY, "right")
-    line(c, MARGIN, H-22*mm, W-MARGIN, H-22*mm, GOLD, 1)
+        W-MARGIN, H-21*mm, "Cairo-Black", 15, NAVY, "right")
+    line(c, MARGIN, H-24*mm, W-MARGIN, H-24*mm, GOLD, 1)
 
     gaps = [
         (RED,     "01", "فجوة الهوية الاستراتيجية — الأخطر والأعمق",
@@ -1173,7 +1173,7 @@ def page_programs_objectives(c, pg):
     header_footer(c, pg, "مقارنة البرامج بالأهداف")
     txt(c, "مقارنة البرامج الحالية بأهداف الجمعية (المادة الخامسة)",
         W-MARGIN, H-19*mm, "Cairo-Black", 14, NAVY, "right")
-    line(c, MARGIN, H-22*mm, W-MARGIN, H-22*mm, GOLD, 1)
+    line(c, MARGIN, H-24*mm, W-MARGIN, H-24*mm, GOLD, 1)
 
     # Alignment matrix
     programs = [
@@ -1277,7 +1277,7 @@ def page_programs_objectives(c, pg):
 def page_conclusion(c, pg):
     header_footer(c, pg, "الخلاصة التشخيصية")
     txt(c, "الخلاصة التشخيصية النهائية", W-MARGIN, H-19*mm, "Cairo-Black", 16, NAVY, "right")
-    line(c, MARGIN, H-22*mm, W-MARGIN, H-22*mm, GOLD, 1.2)
+    line(c, MARGIN, H-24*mm, W-MARGIN, H-24*mm, GOLD, 1.2)
 
     # Big quote box — extra height so text has breathing room
     rect(c, MARGIN, H-80*mm, CW, 52*mm, fill=NAVY)
