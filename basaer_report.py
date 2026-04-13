@@ -9,7 +9,7 @@ from reportlab.lib import colors
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-import arabic_reshaper
+import arabic_reshaper, unicodedata
 from bidi.algorithm import get_display
 
 # ─── FONTS ───────────────────────────────────────────────────────────────────
@@ -53,7 +53,11 @@ PH    = H
 
 # ─── ARABIC TEXT HELPER ──────────────────────────────────────────────────────
 def ar(t):
-    return get_display(arabic_reshaper.reshape(str(t)))
+    reshaped  = arabic_reshaper.reshape(str(t))
+    displayed = get_display(reshaped)
+    # Strip BiDi control / format chars that have no glyph in Cairo
+    return ''.join(c for c in displayed
+                   if unicodedata.category(c) not in ('Cc', 'Cf'))
 
 def txt(c, text, x, y, font="Cairo-Regular", size=10, color=WHITE, anchor="right"):
     c.setFont(font, size)
