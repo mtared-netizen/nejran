@@ -13,21 +13,33 @@ import arabic_reshaper
 from bidi.algorithm import get_display
 
 # ─── FONTS ───────────────────────────────────────────────────────────────────
-UF = "C:/Users/mtare/AppData/Local/Microsoft/Windows/Fonts/"
+UF  = "C:/Users/mtare/AppData/Local/Microsoft/Windows/Fonts/"
+WF  = "C:/Windows/Fonts/"
 def reg(name, path):
     try: pdfmetrics.registerFont(TTFont(name, path))
     except: pass
 
-reg("Cairo-Regular",   UF+"Cairo-Regular.ttf")
-reg("Cairo-Medium",    UF+"Cairo-Medium.ttf")
-reg("Cairo-SemiBold",  UF+"Cairo-SemiBold.ttf")
-reg("Cairo-Bold",      UF+"Cairo-Bold.ttf")
-reg("Cairo-ExtraBold", UF+"Cairo-ExtraBold.ttf")
-reg("Cairo-Black",     UF+"Cairo-Black.ttf")
-reg("DIN-Regular",     UF+"ArbFONTS-DINNextLTArabic-Regular-3.ttf")
-reg("DIN-Bold",        UF+"ArbFONTS-DINNextLTArabic-Bold-3.ttf")
-reg("DIN-Light",       UF+"ArbFONTS-DINNextLTArabic-Light-3.ttf")
-reg("DIN-Medium",      UF+"ArbFONTS-DINNextLTArabic-Medium-3.ttf")
+# Traditional Naskh – primary font pair
+reg("Naskh-Regular", WF+"BTraditionalArabic-Regular.ttf")
+reg("Naskh-Bold",    UF+"kfgqpc-uthman-taha-naskh-bold.ttf")
+reg("Naskh-Light",   WF+"BTraditionalArabic-Regular.ttf")
+reg("Naskh-Heavy",   UF+"traditional-naskh-bold.ttf")
+
+# Aliases: register same files under old Cairo/DIN names
+_NASKH_MAP = {
+    "Cairo-Regular":   WF+"BTraditionalArabic-Regular.ttf",
+    "Cairo-Medium":    WF+"BTraditionalArabic-Regular.ttf",
+    "Cairo-SemiBold":  WF+"BTraditionalArabic-Bold.ttf",
+    "Cairo-Bold":      UF+"kfgqpc-uthman-taha-naskh-bold.ttf",
+    "Cairo-ExtraBold": UF+"traditional-naskh-bold.ttf",
+    "Cairo-Black":     UF+"traditional-naskh-bold.ttf",
+    "DIN-Regular":     WF+"BTraditionalArabic-Regular.ttf",
+    "DIN-Bold":        UF+"kfgqpc-uthman-taha-naskh-bold.ttf",
+    "DIN-Light":       WF+"BTraditionalArabic-Regular.ttf",
+    "DIN-Medium":      WF+"BTraditionalArabic-Regular.ttf",
+}
+for _alias, _path in _NASKH_MAP.items():
+    reg(_alias, _path)
 
 # ─── COLOURS ─────────────────────────────────────────────────────────────────
 NAVY      = colors.HexColor("#0D1B2A")
