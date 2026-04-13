@@ -29,6 +29,8 @@ reg("DIN-Regular",     UF+"ArbFONTS-DINNextLTArabic-Regular-3.ttf")
 reg("DIN-Bold",        UF+"ArbFONTS-DINNextLTArabic-Bold-3.ttf")
 reg("DIN-Light",       UF+"ArbFONTS-DINNextLTArabic-Light-3.ttf")
 reg("DIN-Medium",      UF+"ArbFONTS-DINNextLTArabic-Medium-3.ttf")
+reg("TradArabic",      WF+"trado.ttf")
+reg("TradArabic-Bold", WF+"tradbdo.ttf")
 
 # ─── COLOURS ─────────────────────────────────────────────────────────────────
 NAVY      = colors.HexColor("#0D1B2A")
@@ -228,12 +230,14 @@ def page_cover(c):
     # ── TITLE BLOCK ───────────────────────────────────────────────
     # gold accent lines
     rect(c, MARGIN, H*0.635, CW, 1.5, fill=GOLD)
-    rect(c, W-MARGIN-55*mm, H*0.615, 55*mm, 3, fill=GOLD)
+    rect(c, MARGIN, H*0.615, CW, 0.5, fill=GOLD)
 
-    txt(c, "التقرير التشخيصي لواقع", W-MARGIN, H*0.655, "Cairo-Regular", 12, LTGOLD, "right")
-    txt(c, "جمعية بصائر", W-MARGIN, H*0.605, "Cairo-Black", 36, WHITE, "right")
-    txt(c, "للدعوة والإرشاد وتوعية الجاليات", W-MARGIN, H*0.548, "Cairo-SemiBold", 20, GOLD, "right")
-    txt(c, "منطقة نجران", W-MARGIN, H*0.502, "Cairo-Regular", 14, LTGOLD, "right")
+    txt(c, "تشخيص الواقع الحالي",
+        W/2, H*0.660, "TradArabic-Bold", 30, WHITE, "center")
+    txt(c, "لجمعية الدعوة والإرشاد وتوعية",
+        W/2, H*0.608, "TradArabic-Bold", 24, GOLD, "center")
+    txt(c, "الجاليات في نجران (بصائر)",
+        W/2, H*0.560, "TradArabic-Bold", 24, GOLD, "center")
 
     # gold rule
     rect(c, MARGIN, H*0.455, CW, 0.8, fill=GOLD)
