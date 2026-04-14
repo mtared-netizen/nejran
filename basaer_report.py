@@ -207,9 +207,9 @@ def page_cover(c):
         islamic_star(c, cx_, cy_, ro, ri, nn, 0.07)
 
     # ── LOGO ──────────────────────────────────────────────────────
-    logo_s  = 62*mm          # logo square size
+    logo_s  = 46*mm          # logo square size
     logo_x  = W/2 - logo_s/2
-    logo_y  = H*0.70         # bottom of logo
+    logo_y  = H*0.725        # bottom of logo
     logo_cy = logo_y + logo_s/2
 
     # white circle frame behind logo
@@ -229,10 +229,10 @@ def page_cover(c):
 
     # ── TITLE BLOCK ───────────────────────────────────────────────
     # decorative gold lines framing the title block
-    title_top = H*0.670
+    title_top = H*0.645
     line_gap  = 19*mm          # equal spacing between each line baseline
 
-    rect(c, MARGIN+10*mm, title_top + 3*mm, CW-20*mm, 1.2, fill=GOLD)
+    rect(c, MARGIN+10*mm, title_top + 12*mm, CW-20*mm, 1.2, fill=GOLD)
     rect(c, MARGIN+10*mm, title_top - 3*line_gap - 10*mm, CW-20*mm, 1.2, fill=GOLD)
 
     txt(c, "تشخيص الواقع الحالي",
