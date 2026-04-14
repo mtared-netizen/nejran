@@ -124,7 +124,7 @@ def islamic_star(c, cx, cy, r_out, r_in, n=12, alpha=0.05, col=GOLD):
 # ─── WRAPPED TEXT ────────────────────────────────────────────────────────────
 def wrap_ar(c, text, x, y, w, font="Cairo-Regular", size=11, color=WHITE,
             line_h=None, align="right"):
-    if line_h is None: line_h = size * 1.55
+    if line_h is None: line_h = size * 1.8
     words = text.split()
     lines, cur = [], []
     c.setFont(font, size)
@@ -331,7 +331,7 @@ def page_exec_summary(c, pg):
              "التي تهدف إلى تحديد وتحليل نقاط القوة والضعف الداخلية، إلى جانب الفرص والتحديات "
              "الخارجية التي تؤثر على أداء الجمعية. كما تم بناء هذا التقرير اعتمادًا على مراجعة "
              "وتحليل البيانات والتقارير الرسمية المنشورة خلال الفترة من عام 2019م إلى 2025م.")
-    wrap_ar(c, intro, W-MARGIN, H-27*mm, CW, "Cairo-Regular", 10, DKGRAY, 15, "right")
+    wrap_ar(c, intro, W-MARGIN, H-27*mm, CW, "Cairo-Regular", 10, DKGRAY, 18, "right")
 
     # OVERALL VERDICT BOX
     rect(c, MARGIN, H*0.61, CW, 32*mm, fill=NAVY)
@@ -342,7 +342,7 @@ def page_exec_summary(c, pg):
                "للجاليات إلى مؤسسة تعليمية علمية. هذا التحول يُقلّص إسلام الجاليات 85% "
                "لكنه يُضاعف طلاب متون 891%. الجمعية تمتلك مقومات استثنائية لكنها لا تُحوِّل "
                "إنجازها إلى أثر مقيس — ولا تعرف بالضبط أين تريد أن تكون بعد خمس سنوات.")
-    wrap_ar(c, verdict, W-MARGIN-6, H*0.61+21*mm, CW-10, "Cairo-Regular", 10, WHITE, 15, "right")
+    wrap_ar(c, verdict, W-MARGIN-6, H*0.61+21*mm, CW-10, "Cairo-Regular", 10, WHITE, 18, "right")
 
     # KPI GRID
     kpi_data = [
@@ -372,7 +372,7 @@ def page_exec_summary(c, pg):
     rect(c, MARGIN, 12*mm, CW, 12*mm, fill=LTGRAY)
     rect(c, MARGIN, 12*mm, 3,  12*mm, fill=GOLD)
     wrap_ar(c, "الجمعية ليست ضعيفة الأداء — هي ضعيفة القصد الاستراتيجي الواعي.",
-            W-MARGIN-5, 20*mm, CW-10, "Cairo-Bold", 10.5, DKGRAY, 14, "right")
+            W-MARGIN-5, 20*mm, CW-10, "Cairo-Bold", 10.5, DKGRAY, 17, "right")
 
     c.showPage()
 
@@ -439,7 +439,7 @@ def page_org_overview(c, pg):
         c.setFont("Cairo-Bold", 7)
         c.drawCentredString(MARGIN+7*mm, cy-10.5*mm, str(i+1))
         txt(c, title, W-MARGIN-4, cy-4*mm,  "Cairo-Bold", 8.5, NAVY, "right")
-        wrap_ar(c, desc, W-MARGIN-4, cy-10*mm, CW-16*mm, "Cairo-Regular", 9.5, DKGRAY, 14, "right")
+        wrap_ar(c, desc, W-MARGIN-4, cy-10*mm, CW-16*mm, "Cairo-Regular", 9.5, DKGRAY, 17, "right")
         cy -= 21*mm
 
     # governance quick stats
@@ -572,7 +572,7 @@ def analysis_box(c, x, y, w, text, title="التحليل", max_h=None):
     rect(c, x+w-3, y-bh, 3, bh, fill=DKGREEN)
     rect(c, x, y-8*mm, w, 8*mm, fill=DKGREEN)
     txt(c, title, x+w-5, y-5*mm, "Cairo-Bold", 10.5, WHITE, "right")
-    wrap_ar(c, text, x+w-5, y-13*mm, w-10, "Cairo-Regular", 10, DKGRAY, 15, "right")
+    wrap_ar(c, text, x+w-5, y-13*mm, w-10, "Cairo-Regular", 10, DKGRAY, 18, "right")
     return y - bh
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -1124,7 +1124,7 @@ def page_swot(c, pg):
             c.setFillAlpha(0.9)
             c.circle(bx+hw-8, cy+1.5*mm, 1.2, fill=1, stroke=0)
             c.setFillAlpha(1)
-            wrap_ar(c, pt, bx+hw-11, cy, hw-14, "Cairo-Regular", 7.5, WHITE, 11, "right")
+            wrap_ar(c, pt, bx+hw-11, cy, hw-14, "Cairo-Regular", 7.5, WHITE, 13, "right")
             cy -= 11*mm
 
     c.showPage()
@@ -1182,7 +1182,7 @@ def page_gaps(c, pg):
         txt(c, title, W-MARGIN-4, cy-3.5*mm, "Cairo-Bold", 8.5, NAVY, "right")
         # desc
         wrap_ar(c, desc, W-MARGIN-4, cy-10*mm, CW-22*mm,
-                "Cairo-Regular", 9, DKGRAY, 13, "right")
+                "Cairo-Regular", 9, DKGRAY, 16, "right")
         cy -= gh + 1.5*mm
 
     c.showPage()
@@ -1257,7 +1257,7 @@ def page_programs_objectives(c, pg):
             c.drawCentredString(cx_+cols_w[j+1]/2, ty-5.5*mm, ar(symbol))
         # Note
         wrap_ar(c, note, cols_x[5]+cols_w[5]-2, ty-2*mm, cols_w[5]-4,
-                "Cairo-Regular", 7, DKGRAY, 10, "right")
+                "Cairo-Regular", 7, DKGRAY, 12, "right")
         ty -= rh
 
     # Alignment summary
@@ -1289,7 +1289,7 @@ def page_programs_objectives(c, pg):
     wrap_ar(c,
         "تحذير: برامج التفطير والسلال الغذائية والمصليات المتنقلة لا تندرج في أهداف الجمعية اللائحية — "
         "هي تُرهق الجمعية بأعباء إغاثية تستنزف مواردها ومتطوعيها بعيداً عن بوصلتها الدعوية الأصيلة.",
-        W-MARGIN-4, ty-40*mm, CW-8, "Cairo-Bold", 8, WHITE, 12, "right")
+        W-MARGIN-4, ty-40*mm, CW-8, "Cairo-Bold", 8, WHITE, 14, "right")
 
     c.showPage()
 
@@ -1312,7 +1312,7 @@ def page_conclusion(c, pg):
                        "برنامج علمي ينمو بقوة، ساعات تطوعية في تصاعد مستمر، حوكمة متميزة، "
                        "وتجربة رقمية أثبتت إمكانية الوصول لمليون مشاهد.")
     wrap_ar(c, conclusion_text, W-MARGIN-6, H-33*mm, CW-12,
-            "Cairo-Bold", 10, WHITE, 15, "right")
+            "Cairo-Bold", 10, WHITE, 18, "right")
 
     # Second part
     conclusion2 = ("لكنها في الوقت ذاته تسمح لأكثر مؤشراتها جوهرية — إسلام الجاليات — أن ينهار "
@@ -1320,7 +1320,7 @@ def page_conclusion(c, pg):
                    "صميم أهدافها اللائحية — وهي تستنزف مواردها ومتطوعيها بعيداً عن بوصلتها الدعوية. "
                    "التحدي الأكبر: اتخاذ قرارات لم تُتخذ بعد — عن الهوية، عن الهيكل، عن الأولويات.")
     wrap_ar(c, conclusion2, W-MARGIN-6, H-59*mm, CW-12,
-            "Cairo-Regular", 9.5, LTGOLD, 14, "right")
+            "Cairo-Regular", 9.5, LTGOLD, 17, "right")
 
     # 4 Priority boxes
     priorities = [
@@ -1342,7 +1342,7 @@ def page_conclusion(c, pg):
         txt(c, num, px+pw/2, py-8*mm, "Cairo-Black", 18, WHITE, "center")
         txt(c, title_p, px+pw/2, py-16*mm, "Cairo-Bold", 8, WHITE, "center")
         wrap_ar(c, desc_p, px+pw-3, py-21*mm, pw-6,
-                "Cairo-Regular", 8, WHITE, 12, "right")
+                "Cairo-Regular", 8, WHITE, 14, "right")
 
     # Author signature
     rect(c, MARGIN, 22*mm, CW, 18*mm, fill=LTGRAY)
