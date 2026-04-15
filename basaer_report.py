@@ -603,7 +603,7 @@ def page_new_muslims(c, pg):
         ("931", "إجمالي منذ\nالتأسيس"),
     ]
     sbx = MARGIN + CW*0.65
-    sby = H-36*mm
+    sby = H-40*mm
     sbw = CW*0.33
     sbh = 13*mm
     for val, lbl in st_data:
